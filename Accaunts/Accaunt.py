@@ -6,4 +6,3 @@ class Account:
 
     def get_lvl(self):
         return self.lvl
-
