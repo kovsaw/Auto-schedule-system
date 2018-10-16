@@ -2,14 +2,12 @@ import string
 import unittest
 from abc import abstractmethod
 from Accaunts import Accaunt
+import webview
 
 
 def starter() -> int:
     # TODO Релизовать начальный экран и кнопки.
-    # Две кнопки:
-    # 1 - войти в аккаунт - отправит в окно авторизации, в случае успеха вернет уровень доступа.
-    # 2 - прсото просмотр расписания - вернет 0 уровень доступа и отправит на просмотр.
-    # Окно авторизации не прервывает выполнение функции.
+    # mainlook и кнопка для входа (Администратор и преподователи)
     return 1
 
 
@@ -20,6 +18,7 @@ def _sign_in() -> int:
 
 
 def _register_(login, password) -> int:
+    # Регистрировать может только администратор. (С 3 уровнем доступа)
     current_acc = Accaunt.Account()
     current_acc.login = login
     current_acc._password = password
@@ -48,12 +47,27 @@ def add_comments() -> str:
     pass
 
 
-class TestSystem(unittest.TestCase):
-    # TODO Релизовать UnitTests, подумать о других тестах.
-    def test_one(self):
-        result = 1
-        self.assertEqual(starter(), result)
+# class TestSystem(unittest.TestCase):
+#     # TODO Релизовать UnitTests, подумать о других тестах.
+#     def test_one(self):
+#         result = 1
+#         self.assertEqual(starter(), result)
+
+
+class Api:
+    def __init__(self):
+        self.storage = []
+
+    def add_to_storage(self, elem):
+        self.storage.append(elem)
+
+    def signIn(self, trash=0):
+        webview.evaluate_js("""set_window_menu();""")
 
 
 if __name__ == '__main__':
-    unittest.main()
+    # unittest.main()
+    api = Api()
+    webview.create_window('Shedule', './all.html', js_api=api, resizable=True,
+                          fullscreen=False,
+                          min_size=(600, 450), confirm_quit=False, debug=True)

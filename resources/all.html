@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<head>
+  <title>Form</title>
+  <style>
+
+/*@import url(https://fonts.googleapis.com/css?family=Roboto:300);*/
+
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-names {
+  //position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  //max-width: 360px;
+  margin: 20px 20px 50px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+/*.form-names {
+  //position: relative;
+	//margin-left:auto; 
+    margin-right:auto;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 250px;
+  //margin: 20px 20px 50px;
+  padding: 20px;
+  //text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}*/
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  margin: 30px 0px 0px 0px;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+.table-map {
+    margin-left:auto; 
+    margin-right:auto;
+	text-align:center;
+  text-align: center;
+  //position: absolute;
+  display: block;
+  width: 1200px;
+  height: 710px;
+  border-collapse: collapse;
+}
+td {
+  text-align: center;
+  width: 72px;
+  height: 71px;
+	border: 2px dashed gray;
+}
+td:hover {
+  background-color: lightpink;
+}
+.tooltip {
+  position: fixed;
+  padding: 10px 20px;
+      /* красивости... */
+  border: 1px solid #b3c9ce;
+  border-radius: 4px;
+  text-align: center;
+  font: italic 14px/1.3 arial, sans-serif;
+  color: #333;
+  background: #fff;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+<button id="one"> One (office) </button>
+<button id="two"> Two (map) </button>
+
+<div id="div-sign">
+  <div id="form" class="form">
+
+    <form class="register-form">
+      <input id="up_login" type="text" placeholder="Login"/>
+      <input id="up_password" type="password" placeholder="Password"/>
+      <input id="up_firstname" type="text" placeholder="FirstName"/>
+      <input id="up_lastname" type="text" placeholder="LastName"/>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+      <button id="signUp" >Sign</button>
+    </form>
+
+    <form class="login-form">
+      <input id="in_login" type="login" placeholder="Login"/>
+      <input id="in_password" type="password" placeholder="Password"/>
+      <button id="signIn">Sign In</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>    
+</div>
+
+
+<div id="div-office">
+  <div id="form" class="form">
+    <div id="firstname-content">Имя: firstname</div>
+    <div id="lastname-content">Фамилия: lastname</div>
+    <button id="joinGame" style="display: none"> Join the Game </button>
+  </div>
+</div>
+
+
+<div id="div-map">
+	<div class="form-names">
+	  <div id="round_content">Current round: 0</div>
+	  <table id="players-table"></table>
+  </div>
+
+  <div id="myModal" style="display:none" class="modal">
+  	<!-- Modal content -->
+  	<div class="form">
+  		<header class="dialog-header">
+      	<h1>Подтвердите действие</h1>
+  		<div class="dialog-content">
+      	<p>Вы хотите установить магазин в этом квадрате?</p>
+  		</div>
+      	<span class="close">&times;</span>
+        <input id="set_cost" type="text" placeholder="Укажите стоимость"/>
+  		<div class="btn-group">
+    		<button id="confirm">Подтвердить</button>
+    		<button id="cancel">Отмена</button>
+  		</div>
+  	</div>
+  </div>
+  <table class="table-map" id="table" style='background: url("C:/Users/User/Desktop/Economika/rus.png");'></table>
+</div>
+		
+</body>  
+
+<!-- ##########################################################
+###########################################################-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+/*=========================================================================================================
+ Внешний вид страницы при старте */
+window.onload = init();
+var isSignInPage;
+var isSignUpPage;
+var current_store_x;
+var current_store_y;
+function init() {
+	$("#div-map").slideUp();
+ 	$("#div-office").slideUp(); 
+  isSignInPage = true;
+  isSignUpPage = false;
+  current_store_x = -1;
+  current_store_y = -1;
+}
+
+$( "#one" ).click(function() {
+  $("#div-map").slideUp(1000);  // set 1
+  $("#div-sign").slideUp(1000);// set 1
+  $("#div-office").slideDown(1000);// set 1
+});
+$("#two").click(function() {
+  $("#div-sign").slideUp(1000);// set 1
+  $("#div-office").slideUp(1000);// set 1
+  $("#div-map").slideDown(1000);// set 1
+});
+
+/*=========================================================================================================
+Открытие страниц */
+function set_window_office() {
+  $("#div-map").slideUp(500);
+  $("#div-sign").slideUp(500);
+  $("#div-office").slideDown(500);
+  isSignInPage = false;
+}
+
+function set_window_map() {
+  $("#div-sign").slideUp(500);
+  $("#div-office").slideUp(500);
+  $("#div-map").slideDown(500);
+  isSignInPage = false;
+}
+
+/*=========================================================================================================*/
+/*$(document).keypress(function (e) {
+    if (e.which == 13 && isSignInPage) {
+            document.getElementById("signIn").click();
+    }
+});*/
+
+/*=========================================================================================================
+ Код, выполняющий создание диалогового окна(создание магазина) и обработку нажатий в этом диалоге */
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+//var btn = document.getElementById("myBtn");
+var $btn = $('.set-store')
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+//btn.onclick = function() {
+//    modal.style.display = "block";
+//}
+document.getElementById('set_cost').value = '0';
+$(function(){
+  $('#table').on('click', '.cell', function(){
+    //document.getElementById("round_content").textContent = this.getAttribute("population");
+    window.current_store_x = this.getAttribute("x");
+    window.current_store_y = this.getAttribute("y");
+    modal.style.display = "block";
+  });
+  $('#cancel').on('click', function(){
+	modal.style.display = "none";
+  });
+  $('#confirm').on('click', function(){
+	modal.style.display = "none";
+  window.alert(current_store_x+" " + " "+ current_store_y);
+  pywebview.api.add_to_storage(document.getElementById("set_cost").value);
+  pywebview.api.add_to_storage(current_store_y);
+  pywebview.api.add_to_storage(current_store_x);
+  pywebview.api.set_store();
+  });
+});
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+/*=========================================================================================================!!!!!!!!!!!!!!!!!!!!!!!!
+ TODO функция, которая устанавливает магазин в ячейке */
+function set_store(x, y) {
+	// применить стиль - выделить ячейкуб лиюо какой-гибудь знак
+  current_cell.setAttribute("setHere", "setHere");
+}
+
+/*=========================================================================================================
+ Функция устанавливает номер раунда */
+function set_round(round_num) {
+	document.getElementById("round_content").textContent = "Current round" + round_num;
+}
+
+/*=========================================================================================================
+ Код, выполняющий динамическое создание таблицы по заданным параметрам 
+TODO использовать ВСЕ параметры*/
+create_table(0,0, 0,0,10,16);
+
+function create_table(table_width, table_height, cell_width, cell_height, count_row, count_col) {
+    var table = document.getElementById("table");
+    for (var y = 0; y < count_row; y++) {
+        var row = table.insertRow(y);
+	for (var x = 0; x < count_col; x++) {
+    	    var cell = row.insertCell(x);
+	    cell.innerHTML = x+" "+y;
+	    cell.className = "cell";
+	    cell.setAttribute("x", x);
+	    cell.setAttribute("y", y);
+	    cell.setAttribute("population", "null");
+	    cell.setAttribute("transport_transactions", "null");
+	    cell.setAttribute("current_min_cost", "null");
+	    cell.setAttribute("contribution_of_stores", "null");
+	    var visibleString = "coordinates: " + x + ", " + y + 
+				"<br>population: " + cell.getAttribute("population") + 
+				"<br>transport transactions: " + cell.getAttribute("transport_transactions") +
+				"<br>current min cost: " + cell.getAttribute("current_min_cost") +
+				"<br>contribution of stores: " + cell.getAttribute("contribution_of_stores");
+	    cell.setAttribute("data-tooltip", visibleString);
+      cell.classList.add("set-store");
+    	}
+    }
+}
+
+/*=========================================================================================================
+ Код, наполняющий ячейку таблицы данными, поступившими в качестве параметров */
+set_cell_info(5, 2, "pop","trans","cur","contr");
+
+function set_cell_info(x, y, _population, _transport_transactions, _current_min_cost, _contribution_of_stores) {
+	var table = document.getElementById("table");
+	for (var i = 0, row; row = table.rows[i]; i++) {
+	   for (var j = 0, col; col = row.cells[j]; j++) {
+		if(x == col.getAttribute("x") && y == col.getAttribute("y")) {
+			col.setAttribute("population", _population)
+	    		col.setAttribute("transport_transactions", _transport_transactions)
+	    		col.setAttribute("current_min_cost", _current_min_cost)
+	    		col.setAttribute("contribution_of_stores", _contribution_of_stores)
+			var visibleString = "coordinates: " + x + ", " + y + 
+				"<br>population: " + col.getAttribute("population") + 
+				"<br>transport transactions: " + col.getAttribute("transport_transactions") +
+				"<br>current min cost: " + col.getAttribute("current_min_cost") +
+				"<br>contribution of stores: " + col.getAttribute("contribution_of_stores");
+	    		col.setAttribute("data-tooltip", visibleString)	
+		}
+   	}  
+	}	
+}
+
+/*=========================================================================================================
+ Код, выполняющий динамическое создание таблицы по заданным параметрам */
+create_table_players(19);
+
+function create_table_players(count_players) {
+    var table = document.getElementById("players-table");
+    var count_row = 0;
+    //var row;
+    var col = 0;
+    for (var y = 0; y < count_players; y++) {
+
+	if ((y % 19) == 0) {
+		
+		var row = table.insertRow(count_row);
+		count_row++;
+		col = 0;
+	}
+	var cell = row.insertCell(col);
+	col++;
+	cell.setAttribute("id", "player_" + y);
+	cell.innerHTML = "Kalashnik Maximilian";
+	cell.setAttribute("profit", 0);
+	cell.setAttribute("stores", "None");
+	var visibleString = "Profit: " + cell.getAttribute("profit") + "<br>Stores: " + cell.getAttribute("stores") + "<br>id: " + cell.getAttribute("id");
+	cell.setAttribute("data-tooltip", visibleString)	
+
+   }
+}
+
+/*=========================================================================================================
+ Код, наполняющий ячейку таблицы данными, поступившими в качестве параметров */
+set_cell_player_info(5, "kto-to", 50, 14);
+
+function set_cell_player_info(_id, _name, _profit, _stores_count) {
+	var table = document.getElementById("players-table");
+	var cell = document.getElementById("player_" + _id);
+	cell.innerHTML = _name;
+	cell.profit = _profit;
+	cell.setAttribute("profit", _profit);
+	cell.setAttribute("stores", _stores_count);
+	var visibleString = "Profit: " + cell.getAttribute("profit") + "<br>Stores: " + cell.getAttribute("stores") ;
+	cell.setAttribute("data-tooltip", visibleString);	
+}
+
+/*=========================================================================================================
+ Код, выполняющий создание всплывающих подсказок */
+var showingTooltip;
+    
+document.onmouseover = function(e) {  
+	var target = e.target;
+	var tooltip = target.getAttribute('data-tooltip');   
+	if (!tooltip) return;
+	var tooltipElem = document.createElement('div');
+	tooltipElem.className = 'tooltip';
+	tooltipElem.innerHTML = tooltip;
+	document.body.appendChild(tooltipElem);
+	var coords = target.getBoundingClientRect();
+	var left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2; 
+	if (left < 0) left = 0; // ?? ???????? ?? ????? ??????? ???
+	var top = coords.top - tooltipElem.offsetHeight - 5;
+	if (top < 0) { // ?? ???????? ?? ??????? ??????? ????
+	  top = coords.top + target.offsetHeight + 5;
+  }
+	tooltipElem.style.left = left + 'px';
+	tooltipElem.style.top = top + 'px';
+	showingTooltip = tooltipElem;
+};
+
+document.onmouseout = function(e) {   
+  if (showingTooltip) {  
+	document.body.removeChild(showingTooltip);
+	showingTooltip = null;
+} 
+};
+
+
+//############################################################################# SIGN
+//############################################################################# UP_IN
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+
+var Button_signIn = $("#signIn");
+  Button_signIn.on("mouseup", function() {
+  pywebview.api.add_to_storage(document.getElementById("in_password").value);
+  pywebview.api.add_to_storage(document.getElementById("in_login").value);
+  pywebview.api.signIn();
+});
+var Button_signUp = $("#signUp");
+  Button_signUp.on("mouseup", function() {
+  pywebview.api.add_to_storage(document.getElementById("up_lastname").value)
+  pywebview.api.add_to_storage(document.getElementById("up_firstname").value)
+  pywebview.api.add_to_storage(document.getElementById("up_password").value)
+  pywebview.api.add_to_storage(document.getElementById("up_login").value)
+  pywebview.api.signUp()
+});
+
+
+//############################################################################# OFFICE
+//#############################################################################
+var Button_joinGame = $("#joinGame");
+  Button_joinGame.on("mouseup", function() {
+  pywebview.api.join_the_game()
+
+});
+
+
+function set_office_name(firstname, lastname) {
+  document.getElementById("firstname-content").textContent = firstname;
+  document.getElementById("lastname-content").textContent = lastname;
+};
+function set_button_active() {
+  document.getElementById("joinGame").style.display = "block";
+};
+
+
+</script>
+</html>

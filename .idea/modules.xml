@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Auto-schedule-system.iml" filepath="$PROJECT_DIR$/.idea/Auto-schedule-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ass.iml" filepath="$PROJECT_DIR$/.idea/ass.iml" />
     </modules>
   </component>
 </project>
